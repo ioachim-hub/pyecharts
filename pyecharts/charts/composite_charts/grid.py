@@ -49,7 +49,7 @@ class Grid(Base):
             if self.options.get("visualMap") is None:
                 self.options.update(visualMap=[visual_map])
             else:
-                self.options.get("visualMap").extend(visual_map)
+                self.options.get("visualMap").update(**visual_map.opts)
 
         # title 配置添加
         title = chart.options.get("title", opts.TitleOpts().opts)
@@ -69,7 +69,7 @@ class Grid(Base):
         if chart.options.get("geo") is not None:
             self.options.update(geo=chart.options.get("geo"))
 
-        if isinstance(chart, RectChart):
+        if isinstance(chart, RectChart) and isinstance(chart, Chart):
             if grid_index == 0:
                 grid_index = self._grow_grid_index
 
@@ -82,7 +82,7 @@ class Grid(Base):
         if self._axis_index > 0:
             self.options.get("series").extend(chart.options.get("series"))
             self.options.get("legend").extend(chart.options.get("legend"))
-            if isinstance(chart, RectChart):
+            if isinstance(chart, RectChart) or isinstance(chart, Chart):
                 self.options.get("xAxis").extend(chart.options.get("xAxis"))
                 self.options.get("yAxis").extend(chart.options.get("yAxis"))
             if isinstance(chart, Radar):
