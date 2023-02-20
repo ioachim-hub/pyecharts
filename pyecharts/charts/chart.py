@@ -2,7 +2,7 @@ from .. import options as opts
 from .. import types
 from ..charts.base import Base
 from ..globals import RenderType, ThemeType, ToolTipFormatterType
-from ..types import Optional, Sequence
+from ..types import Optional, Sequence, Union
 
 
 class Chart(Base):
@@ -131,6 +131,7 @@ class Chart(Base):
         datazoom_opts: types.DataZoom = None,
         graphic_opts: types.Graphic = None,
         axispointer_opts: types.AxisPointer = None,
+        grid: dict = None,
     ):
         if tooltip_opts is None:
             tooltip_opts = opts.TooltipOpts(
@@ -144,6 +145,7 @@ class Chart(Base):
             dataZoom=datazoom_opts,
             graphic=graphic_opts,
             axisPointer=axispointer_opts,
+            grid=grid
         )
 
         if brush_opts is not None:
