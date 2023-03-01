@@ -45,7 +45,10 @@ class Grid(Base):
 
         # visualMap 配置添加
         visual_map = chart.options.get("visualMap")
-        if visual_map is not None:
+
+        if "visualMap" not in self.options.keys():
+            self.options.update(visualMap=self.options.get("visualMap"))
+        elif visual_map is not None:
             if isinstance(self.options.get("visualMap"), opts.VisualMapOpts):
                 self.options.update(visualMap=self.options.get("visualMap"))
             else:
