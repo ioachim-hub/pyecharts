@@ -49,6 +49,7 @@ class Bar(RectChart):
         tooltip_opts: types.Tooltip = None,
         itemstyle_opts: types.ItemStyle = None,
         encode: types.Union[types.JSFunc, dict, None] = None,
+        emphasis: dict[str, str] = None
     ):
         self._append_color(color)
         self._append_legend(series_name, is_selected)
@@ -91,6 +92,7 @@ class Bar(RectChart):
                 "tooltip": tooltip_opts,
                 "itemStyle": itemstyle_opts,
                 "encode": encode,
+                "emphasis": emphasis
             }
         )
         return self
