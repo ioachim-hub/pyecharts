@@ -47,7 +47,7 @@ class Grid(Base):
         visual_map = chart.options.get("visualMap")
         if visual_map is not None:
             if isinstance(self.options.get("visualMap"), opts.VisualMapOpts):
-                self.options.update(visualMap=[self.options.get("visualMap")])
+                self.options.update(visualMap=self.options.get("visualMap"))
             else:
                 self.options.get("visualMap").update(**visual_map.opts)
 
