@@ -68,6 +68,7 @@ class WordCloud(Chart):
         self,
         series_name: str,
         data_pair: types.Sequence,
+        data: types.Optional[types.Sequence] = None,
         *,
         shape: str = "circle",
         mask_image: types.Optional[str] = None,
@@ -84,14 +85,18 @@ class WordCloud(Chart):
         tooltip_opts: types.Tooltip = None,
         itemstyle_opts: types.ItemStyle = None,
         textstyle_opts: types.TextStyle = None,
+        x: types.Optional[types.Numeric] = None,
+        y: types.Optional[types.Numeric] = None,
+        z: types.Optional[types.Numeric] = None,
         emphasis_shadow_blur: types.Optional[types.Numeric] = None,
         emphasis_shadow_color: types.Optional[str] = None,
     ):
-        data = []
-        for n, v in data_pair:
-            data.append(
-                {"name": n, "value": v, "textStyle": {"color": gen_color()}}
-            )
+        if data is None:
+            data = []
+            for n, v in data_pair:
+                data.append(
+                    {"name": n, "value": v, "textStyle": {"color": gen_color()}}
+                )
 
         word_size_range = word_size_range or (12, 60)
 

@@ -63,6 +63,7 @@ class Custom(Chart):
                 "zlevel": z_level,
                 "z": z,
                 "tooltip": tooltip_opts,
+                "maskColor": "#000000"
             }
         )
         return self
